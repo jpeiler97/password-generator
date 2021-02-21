@@ -111,7 +111,62 @@ function getPasswordOptions() {
 
 	if (passLength > 128) {
 		alert('Password length is too long.');
+		return;
 	}
+
+	var specialCharCheck = prompt('Would you like to include special characters? Type yes or no.');
+
+	if (specialCharCheck.toLowerCase() === 'yes') {
+		specialCharCheck = true;
+	} else if (specialCharCheck.toLowerCase() === 'no') {
+		specialCharCheck = false;
+	} else {
+		alert('You did not enter yes or no. Your password will by default have no special characters.');
+		specialCharCheck = false;
+	}
+
+	var numCharCheck = prompt('Would you like to include numerical characters? Type yes or no.');
+	if (numCharCheck.toLowerCase() === 'yes') {
+		numCharCheck = true;
+	} else if (numCharCheck.toLowerCase() === 'no') {
+		numCharCheck = false;
+	} else {
+		alert('You did not enter yes or no. Your password will by default have no numerical characters.');
+		numCharCheck = false;
+	}
+
+	var lowerCharCheck = prompt('Would you like to include lower-case characters? Type yes or no.');
+	if (lowerCharCheck.toLowerCase() === 'yes') {
+		lowerCharCheck = true;
+	} else if (lowerCharCheck.toLowerCase() === 'no') {
+		lowerCharCheck = false;
+	} else {
+		alert('You did not enter yes or no. Your password will by default have no lower-case characters.');
+		lowerCharCheck = false;
+	}
+
+	var upperCharCheck = prompt('Would you like to include upper-case characters? Type yes or no.');
+	if (upperCharCheck.toLowerCase() === 'yes') {
+		upperCharCheck = true;
+	} else if (upperCharCheck.toLowerCase() === 'no') {
+		upperCharCheck = false;
+	} else {
+		alert('You did not enter yes or no. Your password will by default have no upper-case characters.');
+		upperCharCheck = false;
+	}
+
+	if (specialCharCheck === false && numCharCheck === false && lowerCharCheck === false && upperCharCheck === false) {
+		alert('You must select at least one character type.');
+		return;
+	}
+
+	var characterTypes = {
+		passLength,
+		specialCharCheck,
+		numCharCheck,
+		lowerCharCheck,
+		upperCharCheck
+	};
 }
 
 // Write password to the #password input
