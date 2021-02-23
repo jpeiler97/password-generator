@@ -167,6 +167,19 @@ function getPasswordOptions() {
 		lowerCharCheck,
 		upperCharCheck
 	};
+
+	return characterTypes;
+}
+
+function getRandomElement(arr) {
+	var randIndex = arr.length;
+	var randElement = Math.float(Math.random * randIndex);
+	return randElement;
+}
+
+function generatePassword() {
+	var options = getPasswordOptions();
+	var result = [];
 }
 
 // Write password to the #password input
