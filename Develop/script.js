@@ -172,14 +172,38 @@ function getPasswordOptions() {
 }
 
 function getRandomElement(arr) {
-	var randIndex = arr.length;
-	var randElement = Math.float(Math.random * randIndex);
+	var randIndex = Math.float(Math.random * arr.length);
+	var randElement = arr[randIndex];
 	return randElement;
 }
 
 function generatePassword() {
 	var options = getPasswordOptions();
 	var result = [];
+
+	var possibleCharacters = [ specialChar, numChar, lowerCaseChar, upperCaseChar ];
+
+	var guaranteedCharacters = [];
+
+	if (options.specialCharCheck) {
+		guaranteedCharacters.push(getRandomElement(specialChar));
+	}
+
+	if (options.numCharCheck) {
+		guaranteedCharacters.push(getRandomElement(numChar));
+	}
+
+	if (options.lowerCharCheck) {
+		guaranteedCharacters.push(getRandomElement(lowerCaseChar));
+	}
+
+	if (options.upperCharCheck) {
+		guaranteedCharacters.push(getRandomElement(upperCaseChar));
+	}
+
+	for (var i = 0; i < options.length; i++) {
+		var possibleCharacter = getRandomElement(possibleCharacters);
+	}
 }
 
 // Write password to the #password input
